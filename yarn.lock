@@ -9210,6 +9210,11 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
+react-bootstrap-character-counter@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-character-counter/-/react-bootstrap-character-counter-1.2.0.tgz#7f290ed0dfa22805f3e5fc0288e732a0ab78ca04"
+  integrity sha512-4QaTGL8XGjhRtFgMglkvUmQKYjeqwZTg1EjgpVAsuBZtNOcMxFXyN8z1NLZkvpcuBpn+S9Sxo7egcKWv1bPSIg==
+
 react-bootstrap@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.0.1.tgz#044b51f34a9db8e17dbfb321a71267a8d6ad11b4"

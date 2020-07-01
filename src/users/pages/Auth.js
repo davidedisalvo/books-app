@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../shared/context/auth-context";
 import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
+
 import axios from "axios";
 import "./Auth.scss";
 
@@ -17,16 +18,24 @@ const Auth = (props) => {
   const [image, setImage] = useState(
     "https://colewest.com/wp-content/uploads/2016/12/user-placeholder.jpg"
   );
+  const [charsLeft, setCharsLeft] = useState(80);
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    console.log(error, "test");
+  };
+  const handleShow = () => {
+    setShow(true);
+  };
 
   const { handleSubmit, register, errors } = useForm();
 
   const onSubmit = (values) => {
     if (isLoginMode) {
+      setError(false);
+
       axios({
         method: "post",
         url: `${process.env.REACT_APP_API_URL}/api/users/login`,
@@ -50,6 +59,7 @@ const Auth = (props) => {
         })
         .catch((err) => {
           setError(true);
+          setShow(true);
         });
     } else {
       const formData = new FormData();
@@ -58,6 +68,7 @@ const Auth = (props) => {
       formData.append("password", values.password);
       formData.append("bio", values.bio);
       formData.append("image", image);
+
       if (!values.image) {
         //if user select no image use placeholder
         values.image =
@@ -87,10 +98,16 @@ const Auth = (props) => {
         })
         .catch((error) => {
           setError(true);
+          setShow(true);
         });
     }
   };
 
+  const handleBioChange = (event) => {
+    var input = event.target.value;
+    let res = 80 - input.length;
+    setCharsLeft(res);
+  };
   const imageHandle = (e) => {
     const file = e.target.files[0];
     setImage(file);
@@ -139,6 +156,7 @@ const Auth = (props) => {
                 <Form.Group controlId="formBasicBio">
                   <Form.Label>Bio</Form.Label>
                   <Form.Control
+                    onChange={handleBioChange}
                     as="textarea"
                     rows="3"
                     name="bio"
@@ -146,14 +164,22 @@ const Auth = (props) => {
                       required: "The field is required",
                       minLength: {
                         value: 40,
-                        message: "Password must contain at least 40 character",
+                        message: "Bio must contain at least 40 character",
                       },
                       maxLength: {
                         value: 80,
-                        message: "Password must contain maximum 80 character",
+                        message: "Bio must contain maximum 80 character",
                       },
                     })}
                   />
+                  <p
+                    className="error"
+                    style={
+                      charsLeft < 0 ? { color: "red" } : { color: "black" }
+                    }
+                  >
+                    Remaining character: {` ${charsLeft}`}
+                  </p>
                   <p className="error">{errors.bio && errors.bio.message}</p>
                 </Form.Group>
               </>
@@ -218,32 +244,30 @@ const Auth = (props) => {
               Do you already have an account? Plese login
             </p>
           )}
-          {error && (
-            <Modal
-              show={show}
-              onHide={handleClose}
-              backdrop="static"
-              keyboard={false}
-            >
-              <Modal.Header closeButton></Modal.Header>
-              <Modal.Body>
-                Your credential are invalid. Please try again.
-              </Modal.Body>
-              <Modal.Footer>
-                <a
-                  class="cta"
-                  style={{
-                    cursor: "pointer",
-                    background: "#009FB7",
-                    color: "#EFF1F3",
-                  }}
-                  onClick={handleClose}
-                >
-                  Close
-                </a>
-              </Modal.Footer>
-            </Modal>
-          )}
+          <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Header closeButton></Modal.Header>
+            <Modal.Body>
+              Your credential are invalid. Please try again.
+            </Modal.Body>
+            <Modal.Footer>
+              <a
+                class="cta"
+                style={{
+                  cursor: "pointer",
+                  background: "#009FB7",
+                  color: "#EFF1F3",
+                }}
+                onClick={handleClose}
+              >
+                Close
+              </a>
+            </Modal.Footer>
+          </Modal>
         </Col>
       </Row>
     </Container>
