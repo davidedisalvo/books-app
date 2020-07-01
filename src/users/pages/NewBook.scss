@@ -1,0 +1,17 @@
+@import "../../colors.scss";
+.book-form {
+  .form-group {
+    text-align: left;
+  }
+  label {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.6rem;
+  }
+
+  h5 {
+    text-align: center;
+    color: $blu;
+  }
+}

@@ -1,0 +1,19 @@
+@import "../colors.scss";
+.navbar {
+  background: $blu;
+  .navbar-collapse .navbar-nav .nav-link {
+    color: $white;
+    font-weight: bold;
+  }
+
+  a.login {
+    cursor: pointer;
+    margin-left: auto;
+    @media only screen and (max-width: 991px) {
+      margin-left: unset;
+    }
+  }
+}
+.navbar-light .navbar-toggler {
+  border: transparent !important;
+}

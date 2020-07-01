@@ -1,0 +1,46 @@
+@import "../colors.scss";
+.header {
+  background: url("../images/books3.jpg");
+  border-radius: 0;
+  width: 100%;
+  height: 550px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-y: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 0;
+
+  .inner {
+    height: 50%;
+    width: 50%;
+    @media only screen and (max-width: 400px) {
+      width: 100%;
+      text-align: center;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  h1,
+  p {
+    color: $white;
+  }
+  p {
+    position: relative;
+    color: $yellow;
+  }
+}
+
+.cta-personal {
+  background: $white;
+
+  &:hover {
+    background: $yellow;
+    transition: 0.3s ease-in-out;
+  }
+}

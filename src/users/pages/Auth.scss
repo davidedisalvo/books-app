@@ -1,0 +1,40 @@
+@import "../../colors.scss";
+.auth {
+  form {
+    margin-top: 30px;
+    .form-group {
+      text-align: left;
+    }
+    label {
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.6rem;
+    }
+  }
+
+  .switch {
+    margin-top: 30px;
+    padding-bottom: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    color: $blu;
+    &:hover {
+      transition: 0.4s;
+      color: $black;
+    }
+  }
+
+  .error {
+    margin-top: 5px;
+    font-weight: bold;
+    color: red;
+    font-size: 0.7rem;
+  }
+
+  .cta {
+    background: $blu;
+    border: 1px solid $blu;
+  }
+}

@@ -1,0 +1,60 @@
+@import "../../colors.scss";
+.single-user {
+  -webkit-box-shadow: 15px 0px 20px -2px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: 15px 0px 20px -2px rgba(0, 0, 0, 0.23);
+  box-shadow: 15px 0px 20px -2px rgba(0, 0, 0, 0.23);
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.23);
+  }
+  .card-image-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+    background: $yellow;
+    .inner {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        width: 112px;
+        height: 112px;
+        object-fit: cover;
+      }
+    }
+  }
+  .card-body {
+    float: left;
+    text-align: left;
+    align-items: center;
+    padding-left: 2.5rem;
+    .card-text {
+      font-size: 0.8rem !important;
+    }
+
+    .card-title {
+      margin-bottom: unset;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  &.card {
+    overflow: hidden;
+    border: none;
+    background: $blu;
+    color: $white;
+    a {
+      font-family: "PT Sans";
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

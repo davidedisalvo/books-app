@@ -1,0 +1,44 @@
+@import "../../colors.scss";
+.single-book {
+  padding: 2rem;
+  padding-bottom: 0;
+  background: $blu;
+  color: $white;
+  -webkit-box-shadow: 12px 9px 22px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 12px 9px 22px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 12px 9px 22px -10px rgba(0, 0, 0, 0.75);
+  margin-bottom: 20px;
+  .card-img-top {
+    margin: 0 auto;
+    width: 6rem;
+    height: 9rem;
+  }
+
+  .card-body {
+    padding: 1.25rem 0.8rem !important;
+    font-size: 0.8rem !important;
+
+    .equalizer {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 1.1rem;
+    }
+
+    .view-book {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      color: $yellow;
+      font-weight: bold;
+      &:hover {
+        transition: 0.5s;
+        color: $black;
+      }
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

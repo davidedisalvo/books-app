@@ -1,0 +1,28 @@
+@import "./colors.scss";
+body {
+  margin: 0;
+
+  font-family: "PT Sans", serif, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $white;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "MuseoModerno", cursive;
+  font-weight: bold;
+}
+
+a {
+  font-family: "MuseoModerno", cursive;
+}

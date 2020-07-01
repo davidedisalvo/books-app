@@ -1,0 +1,21 @@
+@import "../../colors.scss";
+.book-description {
+  border: 10px solid $blu;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  background: $grey;
+  font-weight: bold;
+  color: $white;
+
+  &:after {
+    content: "";
+    width: 10px;
+    height: 30%;
+    z-index: -1;
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    background: #40a0b8;
+  }
+}

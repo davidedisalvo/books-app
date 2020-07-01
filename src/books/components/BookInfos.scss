@@ -1,0 +1,27 @@
+@import "../../colors.scss";
+.book-infos {
+  @media only screen and (max-width: 400px) {
+    margin-bottom: 30px;
+  }
+  .card {
+    overflow: hidden;
+    border: none;
+    text-align: left;
+    background: $blu;
+    color: $white;
+    font-weight: bold;
+    border-radius: 0;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+
+  .card-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-img-top {
+    width: 65%;
+  }
+}

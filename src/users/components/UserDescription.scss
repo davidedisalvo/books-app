@@ -1,0 +1,82 @@
+@import "../../colors.scss";
+.user-description {
+  background: $yellow;
+  padding: 4rem;
+  @media only screen and (max-width: 400px) {
+    padding: 1rem;
+  }
+  .infos {
+    width: 180px;
+    text-align: center;
+    @media only screen and (max-width: 400px) {
+      width: unset;
+    }
+
+    .inner {
+      width: fit-content;
+      margin: 0 auto;
+      text-align: left;
+      @media only screen and (max-width: 400px) {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .imgContainer {
+    margin-bottom: 15px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    padding: 0;
+    overflow: hidden;
+    @media only screen and (max-width: 400px) {
+      margin: 0 auto;
+      margin-bottom: 15px;
+
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  img {
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
+    @media only screen and (max-width: 400px) {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  .bio {
+    padding: 15px;
+    background: $blu;
+    height: auto;
+    @media only screen and (max-width: 400px) {
+      height: 180px;
+    }
+    color: $black;
+    border-radius: 10px;
+    box-shadow: 15px 0px 20px -2px rgba(0, 0, 0, 0.23);
+    color: $white;
+    font-style: italic;
+
+    a {
+      position: absolute;
+      margin-top: 20px;
+      font-weight: bold;
+      font-style: normal;
+      color: $black;
+      bottom: 15px;
+
+      &:hover {
+        color: white;
+        transition: 0.5s;
+      }
+    }
+    p {
+      margin-bottom: 30px;
+    }
+  }
+}
