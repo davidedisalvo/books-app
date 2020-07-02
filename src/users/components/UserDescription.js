@@ -18,9 +18,10 @@ const UserDescription = (props) => {
       .child(props.uid)
       .getDownloadURL()
       .then((url) => {
+        console.log(url);
         setUrl(url);
       });
-  });
+  }, [url]);
 
   const uidUrlParams = location.pathname.substr(1);
   return (
