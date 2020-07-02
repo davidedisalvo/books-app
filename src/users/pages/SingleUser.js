@@ -31,6 +31,7 @@ const SingleUser = (props) => {
     <div>
       <UserDescription
         name={singleUser.name}
+        uid={props.match.params.uid}
         bio={singleUser.bio}
         image={singleUser.image}
         books={singleUser.books}

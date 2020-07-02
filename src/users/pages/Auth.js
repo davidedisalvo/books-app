@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../shared/context/auth-context";
 import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
+import { storage } from "../../firebase/index";
 
 import axios from "axios";
 import "./Auth.scss";
@@ -15,13 +16,15 @@ const Auth = (props) => {
   const [password, setPassword] = useState();
   const [bio, setBio] = useState();
   const [error, setError] = useState(false);
-  const [image, setImage] = useState(
-    "https://colewest.com/wp-content/uploads/2016/12/user-placeholder.jpg"
-  );
+  // const [image, setImage] = useState(
+  //   "https://colewest.com/wp-content/uploads/2016/12/user-placeholder.jpg"
+  // );
   const [charsLeft, setCharsLeft] = useState(80);
 
   const [show, setShow] = useState(false);
-
+  const [image, setImage] = useState(null);
+  const [url, setUrl] = useState("");
+  const [progress, setProgress] = useState(0);
   const handleClose = () => {
     setShow(false);
     console.log(error, "test");
@@ -33,6 +36,7 @@ const Auth = (props) => {
   const { handleSubmit, register, errors } = useForm();
 
   const onSubmit = (values) => {
+    console.log("porca la madonna");
     if (isLoginMode) {
       setError(false);
 
@@ -45,6 +49,7 @@ const Auth = (props) => {
         },
       })
         .then((response) => {
+          console.log("porco il dio cane");
           props.history.push(`/${response.data.userId}`);
           //send token to general state
           auth.login(
@@ -69,11 +74,8 @@ const Auth = (props) => {
       formData.append("bio", values.bio);
       formData.append("image", image);
 
-      if (!values.image) {
-        //if user select no image use placeholder
-        values.image =
-          "https://colewest.com/wp-content/uploads/2016/12/user-placeholder.jpg";
-      }
+      console.log("porco il dio madonna");
+
       axios({
         method: "post",
         url: `${process.env.REACT_APP_API_URL}/api/users/signup`,
@@ -81,6 +83,11 @@ const Auth = (props) => {
         // headers: { "Content-Type": "application/json" },
       })
         .then((response) => {
+          console.log(response);
+          const uploadTask = storage.ref(`images/${response.data.userId}`);
+
+          uploadTask.put(image);
+
           //redirect user to his profile
           props.history.push(`/${response.data.userId}`);
           //send user data to general state
