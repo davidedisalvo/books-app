@@ -13,15 +13,18 @@ const UserDescription = (props) => {
   const [url, setUrl] = useState();
 
   useState(() => {
-    storage
-      .ref("images")
-      .child(props.uid)
-      .getDownloadURL()
-      .then((url) => {
-        console.log(url);
-        setUrl(url);
-      });
-  }, [url]);
+    async function gettingImage() {
+      await storage
+        .ref("images")
+        .child(props.uid)
+        .getDownloadURL()
+        .then((url) => {
+          console.log(url);
+          setUrl(url);
+        });
+    }
+    gettingImage();
+  }, []);
 
   const uidUrlParams = location.pathname.substr(1);
   return (
