@@ -12,7 +12,7 @@ const UserDescription = (props) => {
   let location = useLocation();
   const [url, setUrl] = useState();
 
-  useState(() => {
+  useEffect(() => {
     async function gettingImage() {
       await storage
         .ref("images")
