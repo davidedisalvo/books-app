@@ -26,7 +26,7 @@ const SingleUser = (props) => {
       setIsLoading(false);
     };
     sendRequest();
-  }, [isLoading, singleUser]);
+  }, []);
   return (
     <div>
       <UserDescription

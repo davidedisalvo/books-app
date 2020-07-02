@@ -12,19 +12,19 @@ const UserDescription = (props) => {
   let location = useLocation();
   const [url, setUrl] = useState();
 
+  const gettingImage = () => {
+    storage
+      .ref("images")
+      .child(props.uid)
+      .getDownloadURL()
+      .then((url) => {
+        setUrl(url);
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
-    async function gettingImage() {
-      await storage
-        .ref("images")
-        .child(props.uid)
-        .getDownloadURL()
-        .then((url) => {
-          console.log(url);
-          setUrl(url);
-        });
-    }
     gettingImage();
-  }, []);
+  });
 
   const uidUrlParams = location.pathname.substr(1);
   return (
