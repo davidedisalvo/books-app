@@ -24,7 +24,8 @@ const Auth = (props) => {
   const [show, setShow] = useState(false);
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
-  const [progress, setProgress] = useState(0);
+  const [theResponse, setTheResponse] = useState();
+
   const handleClose = () => {
     setShow(false);
     console.log(error, "test");
@@ -58,7 +59,7 @@ const Auth = (props) => {
             response.data.name
           );
           //send login to general state
-          auth.isLoggedIn(true);
+          auth.isLoggedIn = true;
           if (response.message) {
           }
         })
@@ -83,28 +84,31 @@ const Auth = (props) => {
         // headers: { "Content-Type": "application/json" },
       })
         .then((response) => {
-          console.log(response);
+          // setTheResponse(response);
+          //redirect user to his profile
           const uploadTask = storage.ref(`images/${response.data.userId}`);
-
           uploadTask.put(image).then(() => {
             props.history.push(`/${response.data.userId}`);
-            //send user data to general state
           });
+          //send user data to general state
           auth.login(
             response.data.userId,
             response.data.token,
             response.data.name
           );
           //set login mode
-          auth.isLoggedIn(true);
+          // const uploadTask = storage.ref(`images/${image.name}`);
 
-          //redirect user to his profile
+          // uploadTask.put(image);
 
           if (!response) {
             return;
           }
         })
+
         .catch((error) => {
+          console.log("here");
+          console.log(error);
           setError(true);
           setShow(true);
         });
