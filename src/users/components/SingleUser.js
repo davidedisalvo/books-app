@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { BsArrowRight } from "react-icons/bs";
 
 import "./SingleUser.scss";
 import { Link, NavLink } from "react-router-dom";
+import { storage } from "../../firebase/index";
 
 const SingleUser = (props) => {
+  const [url, setUrl] = useState();
+
+  const gettingImage = () => {
+    storage
+      .ref("images")
+      .child(props.id)
+      .getDownloadURL()
+      .then((url) => {
+        setUrl(url);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    gettingImage();
+  });
   return (
     // <Card className="rounded-4 single-user">
     //   <Card.Img variant="top" src={props.image} />
@@ -22,10 +38,7 @@ const SingleUser = (props) => {
         <Row className="row no-gutters">
           <Col sm={4} className="card-image-container">
             <div className="inner">
-              <Card.Img
-                variant="top"
-                src={`${process.env.REACT_APP_API_URL}/${props.image}`}
-              />
+              <Card.Img variant="top" src={url} />
             </div>
           </Col>
           <Col sm={8} className="inner">
