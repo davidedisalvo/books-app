@@ -86,11 +86,10 @@ const Auth = (props) => {
           console.log(response);
           const uploadTask = storage.ref(`images/${response.data.userId}`);
 
-          uploadTask.put(image);
-
-          //redirect user to his profile
-          props.history.push(`/${response.data.userId}`);
-          //send user data to general state
+          uploadTask.put(image).then(() => {
+            props.history.push(`/${response.data.userId}`);
+            //send user data to general state
+          });
           auth.login(
             response.data.userId,
             response.data.token,
@@ -98,6 +97,8 @@ const Auth = (props) => {
           );
           //set login mode
           auth.isLoggedIn(true);
+
+          //redirect user to his profile
 
           if (!response) {
             return;
