@@ -28,7 +28,6 @@ const Auth = (props) => {
 
   const handleClose = () => {
     setShow(false);
-    console.log(error, "test");
   };
   const handleShow = () => {
     setShow(true);
@@ -37,7 +36,6 @@ const Auth = (props) => {
   const { handleSubmit, register, errors } = useForm();
 
   const onSubmit = (values) => {
-    console.log("porca la madonna");
     if (isLoginMode) {
       setError(false);
 
@@ -50,7 +48,6 @@ const Auth = (props) => {
         },
       })
         .then((response) => {
-          console.log("porco il dio cane");
           props.history.push(`/${response.data.userId}`);
           //send token to general state
           auth.login(
@@ -74,8 +71,6 @@ const Auth = (props) => {
       formData.append("password", values.password);
       formData.append("bio", values.bio);
       formData.append("image", image);
-
-      console.log("porco il dio madonna");
 
       axios({
         method: "post",
@@ -107,7 +102,6 @@ const Auth = (props) => {
         })
 
         .catch((error) => {
-          console.log("here");
           console.log(error);
           setError(true);
           setShow(true);

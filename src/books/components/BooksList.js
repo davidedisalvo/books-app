@@ -24,12 +24,10 @@ const BooksList = (props) => {
             let arr = [];
             const filteredData = responseData.forEach((element) => {
               const filter = element.users.find((el) => el == props.userId);
-              console.log(filter);
               if (filter) {
                 return arr.push(element);
               }
             });
-            console.log(arr);
             if (arr.length !== 0) {
               return setLoadedBooks(arr);
             } else {
