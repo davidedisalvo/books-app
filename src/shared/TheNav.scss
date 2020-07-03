@@ -1,8 +1,12 @@
 @import "../colors.scss";
 .navbar {
   background: $blu;
+  z-index: 9999;
+  @media only screen and (max-width: 991px) {
+    background: $blu;
+  }
   .navbar-collapse .navbar-nav .nav-link {
-    color: $white;
+    color: $black;
     font-weight: bold;
   }
 

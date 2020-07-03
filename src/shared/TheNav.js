@@ -6,9 +6,9 @@ import "./TheNav.scss";
 
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-const TheNav = () => {
+const TheNav = (props) => {
   const [expanded, setExpanded] = useState(false);
-
+  console.log(props, "propsnav");
   const auth = useContext(AuthContext);
   return (
     <Navbar expand="lg" style={{ padding: ".2rem 1rem" }} expanded={expanded}>
@@ -24,7 +24,7 @@ const TheNav = () => {
             exact
             activeStyle={{
               fontWeight: "bold",
-              color: "#272727",
+              color: "#eff1f3",
             }}
             className="nav-link"
           >
@@ -36,7 +36,7 @@ const TheNav = () => {
             exact
             activeStyle={{
               fontWeight: "bold",
-              color: "#272727",
+              color: "#eff1f3",
             }}
             className="nav-link"
           >
@@ -49,7 +49,7 @@ const TheNav = () => {
               exact
               activeStyle={{
                 fontWeight: "bold",
-                color: "#272727",
+                color: "#eff1f3",
               }}
               className="nav-link"
             >
@@ -63,7 +63,7 @@ const TheNav = () => {
               exact
               activeStyle={{
                 fontWeight: "bold",
-                color: "#272727",
+                color: "#eff1f3",
               }}
               className="nav-link"
             >
@@ -78,7 +78,7 @@ const TheNav = () => {
               exact
               activeStyle={{
                 fontWeight: "bold",
-                color: "#272727",
+                color: "#eff1f3",
               }}
               className="nav-link login"
             >

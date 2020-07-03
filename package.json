@@ -23,7 +23,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-star-ratings": "^2.3.0",
-    "simple-react-validator": "^1.4.6"
+    "simple-react-validator": "^1.4.6",
+    "vanta": "^0.5.16"
   },
   "scripts": {
     "start": "react-scripts start",

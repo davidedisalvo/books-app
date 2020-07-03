@@ -1,5 +1,6 @@
 @import "../colors.scss";
 .header {
+  margin-top: -52px;
   background: url("../images/books3.jpg");
   border-radius: 0;
   width: 100%;
@@ -28,11 +29,12 @@
 
   h1,
   p {
-    color: $white;
+    color: $black;
   }
   p {
     position: relative;
-    color: $yellow;
+    color: $white;
+    font-weight: bold;
   }
 }
 
