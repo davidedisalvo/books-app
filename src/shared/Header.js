@@ -6,8 +6,11 @@ import TRUNK from "vanta/dist/vanta.trunk.min.js";
 const Header = (props) => {
   const [vantaEffect, setVantaEffect] = useState(0);
   const myRef = useRef(null);
+  const x = window.matchMedia("(min-width: 900px)");
+
   useEffect(() => {
-    if (!props.image) {
+    console.log(x.matches);
+    if (!props.image && x.matches) {
       if (!vantaEffect) {
         setVantaEffect(
           TRUNK({

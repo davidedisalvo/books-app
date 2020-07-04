@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { storage } from "../../firebase/index";
 import { Col, ListGroup } from "react-bootstrap";
 import { BsArrowRight } from "react-icons/bs";
 
@@ -9,16 +9,21 @@ import "./Readers.scss";
 
 const Readers = (props) => {
   const [readers, setReaders] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const test = [];
+
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/users/readers/${props.id}`)
-      .then((response) => {
+      .then(async (response) => {
         const responsData = response.data.users;
+
         setReaders(responsData);
       })
       .catch((err) => {});
   }, [props.id]);
+
   return (
     <Col xs={12} sm={4} md={{ span: 4, offset: 2 }}>
       <div className="readers">
@@ -30,9 +35,7 @@ const Readers = (props) => {
                 <ListGroup.Item>
                   <div className="inner">
                     <div className="image-container">
-                      <img
-                        src={`${process.env.REACT_APP_API_URL}/${r.image}`}
-                      />
+                      {/* <img src={r.url} /> */}
                     </div>
                     <p>{r.name}</p>
                   </div>
