@@ -43,9 +43,13 @@ const Users = () => {
           </NavLink>
         )}
       </Header>
-      <Information />
+      <section
+        style={{ background: "#eff1f3", zIndex: "999", position: "relative" }}
+      >
+        <Information />
 
-      <UsersList />
+        <UsersList />
+      </section>
     </div>
   );
 };

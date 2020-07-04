@@ -13,6 +13,9 @@
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 0;
+  canvas {
+    position: fixed !important;
+  }
 
   .inner {
     height: 50%;
